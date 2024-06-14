@@ -20,5 +20,6 @@ export const RegisterAPI = async (body: any) => {
     method: "POST",
     body,
   });
+
   return response;
 };

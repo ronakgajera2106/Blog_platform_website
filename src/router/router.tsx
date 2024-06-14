@@ -6,6 +6,7 @@ import { PublicLayout } from "../layout/public/publicLayout";
 import { lazyImport } from "../utils/lazyImport";
 
 const Homepage = React.lazy(() => import("../page/home/Homepage"));
+const Blogs = React.lazy(() => import("../page/blogs/BlogsAll"));
 const { Signinpage } = lazyImport(
   () => import("../page/auth/Signinpage"),
   "Signinpage"
@@ -30,6 +31,7 @@ export const RouterConfig = () => {
           }
         >
           <Route index element={<Homepage />} />
+          <Route path="allblogs" element={<Blogs />} />
         </Route>
         <Route path="signin" element={<Signinpage />} />
         <Route path="signup" element={<SignUppage />} />

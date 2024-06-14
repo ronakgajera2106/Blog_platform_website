@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { SigninValuestypes } from "../../types/auth";
@@ -39,7 +33,7 @@ export const Signinpage = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-    setFieldValue,
+    // setFieldValue,
   } = useFormik<SigninValuestypes>({
     initialValues: {
       emailaddress: "",
@@ -65,156 +59,97 @@ export const Signinpage = () => {
   });
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card
-        color="transparent"
-        shadow={false}
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
-        <Typography
-          variant="h4"
-          color="blue-gray"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Sign In
-        </Typography>
-        <Typography
-          color="gray"
-          className="mt-1 font-normal"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Nice to meet you! Enter your details to login.
-        </Typography>
-        <form
-          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-          onSubmit={handleSubmit}
-        >
-          <div className="mb-4 flex flex-col gap-6">
-            <Input
-              size="lg"
-              type="email"
-              name="emailaddress"
-              label="Your Email"
-              placeholder="name@mail.com"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.emailaddress}
-              error={touched.emailaddress && Boolean(errors.emailaddress)}
-              // success={touched.emailaddress && !errors.emailaddress}
-              className={`${
-                errors.emailaddress && touched.emailaddress
-                  ? "border-red-500"
-                  : "border-blue-gray-200 focus:border-gray-900"
-              }`}
-              labelProps={{
-                className: "",
-              }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-              crossOrigin={undefined}
-            />
-            {touched.emailaddress && errors.emailaddress && (
-              <Typography
-                color="red"
-                className="text-sm -mt-5"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
+    <div className="flex justify-center items-center h-screen bg-[#EDF2F7]">
+      <div className="max-w-sm w-full mx-auto">
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <h1 className="text-2xl font-bold text-center mb-3">Sign In</h1>
+          <p className="text-center"> Lorem ipsum dolor, sit amet?</p>
+          <br />
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label
+                className="block text-gray-600 px-1 text-sm font-bold mb-2"
+                htmlFor="emailaddress"
               >
-                {errors.emailaddress}
-              </Typography>
-            )}
-            <Input
-              size="lg"
-              type="password"
-              name="password"
-              label="Password"
-              placeholder="********"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              error={touched.password && Boolean(errors.password)}
-              // success={touched.password && !errors.password}
-              className={`${
-                errors.password && touched.password
-                  ? "border-red-500"
-                  : "border-blue-gray-200 focus:border-gray-900"
-              }`}
-              labelProps={{
-                className: "",
-              }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-              crossOrigin={undefined}
-            />
-            {touched.password && errors.password && (
-              <Typography
-                color="red"
-                className="text-sm -mt-5"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
+                Email Address
+              </label>
+              <input
+                type="text"
+                id="emailaddress"
+                name="emailaddress"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.emailaddress}
+                className={`${
+                  touched.emailaddress && errors.emailaddress
+                    ? "border-red-500"
+                    : "border-gray-300"
+                } appearance-none block rounded-lg text-md w-full py-2 px-3 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md text-gray-700 leading-tight  focus:shadow-outline focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none`}
+                placeholder="Enter your email address"
+              />
+              {touched.emailaddress && errors.emailaddress && (
+                <p className="text-red-500 text-xs italic mt-1">
+                  {errors.emailaddress}
+                </p>
+              )}
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
               >
-                {errors.password}
-              </Typography>
-            )}
-          </div>
-          <Checkbox
-            label={
-              <Typography
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                className={`${
+                  touched.password && errors.password
+                    ? "border-red-500"
+                    : "border-gray-300"
+                } appearance-none block rounded-lg text-md w-full py-2 px-3 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md text-gray-700 leading-tight  focus:shadow-outline focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none`}
+                placeholder="Enter your password"
+              />
+              {touched.password && errors.password && (
+                <p className="text-red-500 text-xs italic mt-1">
+                  {errors.password}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex items-center justify-between">
+              <label className="text-gray-700 font-bold">
+                <input
+                  type="checkbox"
+                  className="mr-2 leading-tight"
+                  id="checked"
+                  name="checked"
+                  onChange={handleChange}
+                  checked={values.checked}
+                />
+                <span className="text-sm">Remember me</span>
+              </label>
+              <a
+                href="#"
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
               >
-                I agree to the
-                <a
-                  href="#"
-                  className="font-medium transition-colors hover:text-gray-900"
-                >
-                  &nbsp;Terms and Conditions
-                </a>
-              </Typography>
-            }
-            checked={values.checked}
-            onChange={() => setFieldValue("checked", !values.checked)}
-            containerProps={{ className: "-ml-2.5" }}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-            crossOrigin={undefined}
-          />
-          <Button
-            className="mt-6"
-            type="submit"
-            fullWidth
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            Sign In
-          </Button>
-          <Typography
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-            color="gray"
-            className="mt-4 text-center font-normal"
-          >
-            Don't have an account?{" "}
-            <Link to="/signup" className="font-medium text-gray-900">
-              Sign Up
-            </Link>
-          </Typography>
-        </form>
-      </Card>
+                Forgot Password?
+              </a>
+            </div>
+            <div className="flex items-center justify-center">
+              <button
+                type="submit"
+                className="bg-gray-800 hover:bg-black text-white font-semibold py-3 w-full mt-3 text-lg px-6 block shadow-xl rounded-lg focus:outline-none focus:shadow-outline"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

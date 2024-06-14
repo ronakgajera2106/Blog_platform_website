@@ -1,4 +1,5 @@
 import React from "react";
+import { BlogCard } from "../../components/Cards/BlogCards";
 
 const Homepage = () => {
   return (
@@ -210,6 +211,8 @@ const Homepage = () => {
             </div>
           </div>
         </section>
+
+        {/* <BlogCard /> */}
       </div>
     </>
   );
